@@ -2,19 +2,23 @@
 
 // a:
 const [a, b] = [1];
-console.log(a * b); // <== ???
+console.log(a * b); // <== NaN
+// b => undefined
+// 1 * undefined = NaN
 
 // b:
 const [a, b = 1] = [2];
-console.log(a * b); // <== ???
+console.log(a * b); // <== 2
+// a => 2
+// b => 1
 
-// b:
+// c:
 let [a, b = 2, c, d = 1] = [3, 4];
-console.log(a, b, c, d); // ==> ???
+console.log(a, b, c, d); // ==> 3, 4, undefined, 1
 
-// ************************************************************************************************
+// ************************************************************************************
 
-// 2: Given the object, use function parameter destructuring to get the following output:
+// 2:
 
 const greenSmoothie = {
   leaf: 'spinach',
@@ -24,9 +28,10 @@ const greenSmoothie = {
   liquid: 'almond milk'
 };
 
-function getIngredients(/* your code here */) {
-  return `To make the green smoothie,  you  should add: ______, ______, ______, ______ and ______.`;
+function getIngredients({ leaf, veggie, seed, nut, liquid }) {
+  return `To make a green smoothie,  you  should add: ${leaf}, ${veggie}, ${seed}, ${nut} and ${liquid}.`;
 }
 
-getIngredients(/* your code here */);
-// => expected: // To make a green smoothie, you should add: spinach, bok choy, ground flex seeds, peanut and almond milk.
+getIngredients(greenSmoothie);
+
+// To make a green smoothie, you should add: spinach, bok choy, ground flex seeds, peanut and almond milk.

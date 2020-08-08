@@ -37,7 +37,11 @@ const students = [
 ];
 
 function sortByScore(arr) {
-  // .. your code here
+  const sorted = [...arr].sort((a, b) => (a.score < b.score ? 1 : -1));
+
+  const [firstPlace, secondPlace, thirdPlace, ...rest] = sorted;
+
+  return { firstPlace, secondPlace, thirdPlace, rest };
 }
 
 sortByScore(students);
